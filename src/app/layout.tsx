@@ -4,6 +4,7 @@ import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
 
 import { ApolloProvider } from "@/apollo/react";
+import { DatadogInit } from "@/dd/react";
 import StoreProvider from "@/redux/react";
 
 export const metadata: Metadata = {
@@ -16,6 +17,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
       <body>
+        <DatadogInit />
         <ApolloProvider>
           <StoreProvider>{children}</StoreProvider>
         </ApolloProvider>
