@@ -1,9 +1,7 @@
 // https://github.com/launchdarkly-labs/nextjs-ld-template
 "use client";
 
-import type { LDOptions } from "launchdarkly-js-client-sdk";
-import type { LDContext } from "launchdarkly-js-sdk-common";
-import { asyncWithLDProvider } from "launchdarkly-react-client-sdk";
+import { asyncWithLDProvider, type ProviderConfig } from "launchdarkly-react-client-sdk";
 import { use, useMemo, type ReactNode } from "react";
 
 import { env } from "@/env";
@@ -14,8 +12,8 @@ export function LDProvider({
   options,
 }: {
   children: ReactNode;
-  context: LDContext;
-  options: LDOptions;
+  context?: ProviderConfig["context"];
+  options?: ProviderConfig["options"];
 }) {
   const Provider = useMemo(
     () =>
