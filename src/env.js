@@ -4,11 +4,20 @@ import { z } from "zod";
 export const env = createEnv({
   server: {
     NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
+
+    LAUNCHDARKLY_SDK_KEY: z.string(),
   },
 
   client: {
     // "https://example.com/api/graphql"
     NEXT_PUBLIC_API_URL: z.string().url(),
+
+    NEXT_PUBLIC_DATADOG_APPLICATION_ID: z.string(),
+    NEXT_PUBLIC_DATADOG_CLIENT_TOKEN: z.string(),
+    NEXT_PUBLIC_DATADOG_ENV: z.string(),
+    NEXT_PUBLIC_DATADOG_SERVICE_NAME: z.string(),
+
+    NEXT_PUBLIC_LD_CLIENT_SDK_KEY: z.string(),
   },
 
   /**
@@ -17,7 +26,16 @@ export const env = createEnv({
    */
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
+    LAUNCHDARKLY_SDK_KEY: process.env.LAUNCHDARKLY_SDK_KEY,
+
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+
+    NEXT_PUBLIC_DATADOG_APPLICATION_ID: process.env.NEXT_PUBLIC_DATADOG_APPLICATION_ID,
+    NEXT_PUBLIC_DATADOG_CLIENT_TOKEN: process.env.NEXT_PUBLIC_DATADOG_CLIENT_TOKEN,
+    NEXT_PUBLIC_DATADOG_ENV: process.env.NEXT_PUBLIC_DATADOG_ENV,
+    NEXT_PUBLIC_DATADOG_SERVICE_NAME: process.env.NEXT_PUBLIC_DATADOG_SERVICE_NAME,
+
+    NEXT_PUBLIC_LD_CLIENT_SDK_KEY: process.env.NEXT_PUBLIC_LD_CLIENT_SDK_KEY,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
