@@ -3,11 +3,12 @@ import Link from "next/link";
 
 import { query } from "@/apollo/server";
 import { Dragons } from "@/app/_components/dragons";
+import { LdShowCase } from "@/app/_components/ld-showcase";
 import { graphql } from "@/gql";
 
 import { Counter } from "./_components/counter";
 
-const DragonsQueryFromServer = graphql(/* GraphQL */ `
+const DragonsQueryFromServer = graphql(`
   query Dragons {
     dragons {
       name
@@ -45,6 +46,7 @@ export default async function Home() {
 
         <Dragons />
         <Counter />
+        <LdShowCase />
       </div>
     </main>
   );

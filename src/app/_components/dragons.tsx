@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/client";
 
 import { graphql } from "@/gql";
 
-const DragonsQueryFromClient = graphql(/* GraphQL */ `
+const DragonsQueryFromClient = graphql(`
   query DragonsWithType {
     dragons {
       id
